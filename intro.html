@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Nepflix Intro</title>
+
+<style>
+  body {
+    margin: 0;
+    background: black;
+  }
+
+  .video-wrapper {
+  position: relative;
+  height: 100vh;
+  background: black;
+}
+
+video {
+  position: absolute;
+
+  top: 50%;
+  left: 50%;
+
+  transform: translate(-50%, -50%);
+
+  width: 70%;
+  height: auto;
+}
+  /* Transparent clickable layer */
+  .skip-link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  video {
+  width: 100%;
+  max-width: 900px;
+  height: auto;
+}
+</style>
+</head>
+
+<body>
+
+<div class="video-wrapper">
+  
+  <video autoplay>
+    <source src="assets/videos/Nepali_cenema.mp4" type="video/mp4">
+  </video>
+
+  <!-- Click anywhere to skip -->
+  <a href="home.html" class="skip-link"></a>
+
+</div>
+</body>
+</html>

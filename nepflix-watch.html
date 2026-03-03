@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nepflix – Watch Unko Sweater</title>
+  <meta name="description" content="Watch Unko Sweater on Nepflix – Nepal's premium streaming platform for Nepali cinema.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/x-icon" href="./assets/img/N bar.png">
+  <link rel="stylesheet" href="nepflix-watchcss.css">
+</head>
+<body>
+
+  <div class="player-wrapper" id="playerWrapper">
+
+    <!-- Navigation Overlay -->
+    <nav class="nav" id="playerNav">
+
+      <!-- Logo -->
+      <a href="home.html" class="nav__logo">
+        <img src="./assets/img/nepFL.png" alt="Nepflix Logo" class="nav__logo-img">
+      </a>
+
+      <!-- Current movie title -->
+      <div class="nav__title">Unko Sweater</div>
+
+      <!-- Action buttons -->
+      <div class="nav__actions">
+        <a href="home.html" class="nav__btn" title="Go Back">←</a>
+      </div>
+    </nav>
+
+
+    <video
+      class="player__video"
+      id="mainVideo"
+      controls
+      preload="metadata"
+      poster="./assets/posters/home_bg.jpeg"
+    >
+     
+      <source
+        src="assets/videos/Official Movie Trailer.mp4"
+        type="video/mp4">
+    </video>
+  <!-- Glow divider -->
+  <div class="glow-divider"></div>
+
+  <!-- ============================================================
+       MOVIE INFORMATION SECTION
+  ============================================================= -->
+  <section class="movie-info">
+
+    <!-- Left Column: Poster + Buttons -->
+    <div class="movie-info__left">
+
+      <div class="movie-poster">
+        <img
+          src="./assets/img/poster1.jpg"
+          alt="Unko Sweater Movie Poster"
+          onerror="this.style.background='#141414'"
+        >
+        <span class="movie-poster__rating">U</span>
+      </div>
+
+      <div class="movie-meta">
+        <span>2012</span>
+        <span class="movie-meta__sep">•</span>
+        <span>2h 18m</span>
+        <span class="movie-meta__sep">•</span>
+        <span>Romance · Drama</span>
+      </div>
+
+      <!-- IMDb -->
+      <div class="imdb-block">
+        <span class="imdb-badge">IMDb</span>
+        <span class="imdb-score">6.3</span>
+        <span class="imdb-label">/ 10</span>
+      </div>
+
+      <!-- Play button scrolls to video -->
+      <a href="#playerWrapper" class="btn-play-large">
+        <span>▶</span> Play Now
+      </a>
+
+      <button class="btn-download">
+        <span>⬇</span> Download
+      </button>
+
+    </div><!-- /movie-info__left -->
+
+    <!-- Right Column: Title + Details -->
+    <div class="movie-info__right">
+
+      <h1 class="movie-info__title">
+        <span style="font-size:0.55em; font-family:'DM Sans',sans-serif; font-weight:300; color:rgba(255,255,255,0.5); display:block; letter-spacing:2px; margin-bottom:4px;">ऊनको स्वीटर</span>
+        Unko Sweater
+      </h1>
+
+      <p class="movie-info__description">
+        Unko Sweater is a Nepali romantic social drama that explores love across cultural
+        and caste boundaries. The story follows Dharanidhar, a young man from a traditional
+        Brahmin family, who falls in love with Phool, a free-spirited girl from the Gurung
+        community. Their relationship faces resistance from family expectations and deep-rooted
+        social norms, portraying themes of identity, acceptance, and social change.
+      </p>
+
+      <div class="movie-details">
+
+        <div class="movie-detail">
+          <span class="movie-detail__label">Cast</span>
+          <div class="cast-list">
+            <span class="cast-chip">Bipin Karki</span>
+            <span class="cast-chip">Miruna Magar</span>
+            <span class="cast-chip">Parikshya Limbu</span>
+            <span class="cast-chip">Alex Paras</span>
+          </div>
+        </div>
+
+        <div class="movie-detail">
+          <span class="movie-detail__label">Director</span>
+          <span class="movie-detail__value">Nabin Chauhan</span>
+        </div>
+
+        <div class="movie-detail">
+          <span class="movie-detail__label">Language</span>
+          <span class="movie-detail__value">Nepali · Subtitles: English</span>
+        </div>
+
+        <div class="movie-detail">
+          <span class="movie-detail__label">Genre</span>
+          <span class="movie-detail__value">Romance, Social Drama</span>
+        </div>
+
+        <div class="movie-detail">
+          <span class="movie-detail__label">Production</span>
+          <span class="movie-detail__value">Artmandu Pvt. Ltd.</span>
+        </div>
+
+        <div class="movie-detail">
+          <span class="movie-detail__label">Released</span>
+          <span class="movie-detail__value">2012 · Nepal</span>
+        </div>
+
+      </div>
+
+    </div><!-- /movie-info__right -->
+
+  </section>
+
+</body>
+</html>

@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Nepflix – Stream Nepali Cinema</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;0,700;1,400&family=Cinzel:wght@600;900&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="home_style.css"/>
+  <link rel="icon" type="image/x-icon" href="./assets/img/N bar.png">
+</head>
+<body>
+
+  <!-- ============================
+       SIDEBAR
+  ============================= -->
+  <nav class="sidebar">
+    <div class="sidebar__brand">
+      <img src="./assets/img/icon.png"
+           alt="Nepflix Logo"
+           class="sidebar__brand-logo">
+    </div>
+    <ul class="sidebar__nav">
+      <li class="sidebar__item sidebar__item--active">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/></svg>
+        <span class="sidebar__label">Home</span>
+      </li>
+      <li class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.5 14h-.79l-.28-.27A6.47 6.47 0 0 0 16 9.5 6.5 6.5 0 1 0 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
+        <span class="sidebar__label">Search</span>
+      </li>
+      <li class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9h-4v4h-2v-4H9V9h4V5h2v4h4v2z"/></svg>
+        <span class="sidebar__label">My List</span>
+      </li>
+      <li class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 4l2 4h-3l-2-4h-2l2 4h-3l-2-4H8l2 4H7L5 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4h-4z"/></svg>
+        <span class="sidebar__label">Films</span>
+      </li>
+      <li class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17 12h-5v5h5v-5zM16 1v2H8V1H6v2H5c-1.11 0-1.99.9-1.99 2L3 19c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2h-1V1h-2zm3 18H5V8h14v11z"/></svg>
+        <span class="sidebar__label">Trending</span>
+      </li>
+      <li class="sidebar__item">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+        <span class="sidebar__label">Classics</span>
+      </li>
+    </ul>
+    <div class="sidebar__bottom">
+      <div class="sidebar__item">
+        <div class="sidebar__avatar">AS</div>
+        <span class="sidebar__label">Profile</span>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ============================
+       MAIN CONTENT
+  ============================= -->
+  <main class="main">
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__bg">
+        <div class="hero__bg-image"></div>
+      </div>
+      <div class="hero__gradient"></div>
+      <div class="hero__content">
+        <h1 class="hero__title">
+          <span class="hero__title-np">ऊनको स्वीटर</span>
+          <span class="hero__title-en">Unko Sweater</span>
+        </h1>
+        <div class="hero__meta">
+          <div class="hero__imdb">
+            <span class="hero__imdb-label">IMDb</span>
+            <span class="hero__imdb-score">6.3</span>
+          </div>
+          <span class="hero__year">2012</span>
+          <span class="hero__cert">U</span>
+          <span class="hero__runtime">2h 18m</span>
+          <span class="hero__lang">नेपाली</span>
+        </div>
+        <div class="hero__genres">
+          <span class="genre-tag">Romance</span>
+          <span class="genre-tag">Drama</span>
+          <span class="genre-tag">Social</span>
+        </div>
+        <p class="hero__synopsis">A tender love story challenged by caste and tradition, set among the misty hills of Nepal.</p>
+        <div class="hero__actions">
+          <a href="nepflix-watch.html" class="btn btn--play">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+            Play Now
+          </a>
+          <button class="btn btn--trailer">
+            <a href="nepflix-watch.html" class="btn btn--trailer-link">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Trailer
+          </button>
+          <button class="btn btn--add" title="Add to My List">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENT AREA -->
+    <div class="content-area">
+
+      <!-- ========================
+           SECTION 1: New Releases
+      ========================= -->
+      <section class="movie-section" id="newReleases">
+        <div class="section-header">
+          <div class="section-header__left">
+            <span class="section-header__accent"></span>
+            <h2 class="section-title">New Nepali Releases</h2>
+          </div>
+          <a href="#" class="section-more">View All <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
+        </div>
+        <div class="movie-row-wrapper">
+          <div class="movie-row">
+
+            <!-- chhakka-panja-4.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__new-tag">NEW</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/chhakka-panja-4.jpg" alt="Chhakka Panja 4 poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.1 ⭐</span>
+                    <span class="overlay-year">2024</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">छक्का पन्जा ४ — Chhakka Panja 4</div>
+                <div class="movie-card__sub"><span>Comedy</span><span>·</span><span>2h 10m</span></div>
+              </div>
+            </div>
+
+            <!-- bulbul.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__new-tag">NEW</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/bulbul.jpg" alt="Bulbul poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.6 ⭐</span>
+                    <span class="overlay-year">2023</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">बुलबुल — Bulbul</div>
+                <div class="movie-card__sub"><span>Romance</span><span>·</span><span>2h 5m</span></div>
+              </div>
+            </div>
+
+            <!-- jatra-2.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__new-tag">NEW</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/jatra-2.jpg" alt="Jatra 2 poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">6.9 ⭐</span>
+                    <span class="overlay-year">2023</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">यात्रा २ — Jatra 2</div>
+                <div class="movie-card__sub"><span>Comedy</span><span>·</span><span>2h 18m</span></div>
+              </div>
+            </div>
+
+            <!-- seto-surya.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__new-tag">NEW</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/seto-surya.jpg" alt="Seto Surya poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.8 ⭐</span>
+                    <span class="overlay-year">2023</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">सेतो सूर्य — Seto Surya</div>
+                <div class="movie-card__sub"><span>War</span><span>·</span><span>2h 30m</span></div>
+              </div>
+            </div>
+
+            <!-- bagmati.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__new-tag">NEW</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/bagmati.jpg" alt="Bagmati poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.3 ⭐</span>
+                    <span class="overlay-year">2024</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">बागमती — Bagmati</div>
+                <div class="movie-card__sub"><span>Thriller</span><span>·</span><span>1h 58m</span></div>
+              </div>
+            </div>
+
+            <!-- mero-yatra.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__new-tag">NEW</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/mero-yatra.jpg" alt="Mero Yatra poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">6.8 ⭐</span>
+                    <span class="overlay-year">2024</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">मेरो यात्रा — Mero Yatra</div>
+                <div class="movie-card__sub"><span>Road Movie</span><span>·</span><span>2h 2m</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION 2: Trending
+      ========================= -->
+      <section class="movie-section" id="trending">
+        <div class="section-header">
+          <div class="section-header__left">
+            <span class="section-header__accent section-header__accent--orange"></span>
+            <h2 class="section-title">Trending in Nepal</h2>
+          </div>
+          <a href="#" class="section-more">View All <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
+        </div>
+        <div class="movie-row-wrapper">
+          <div class="movie-row">
+
+            <!-- chhakka-panja-3.jpg -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/chhakka-panja-3.jpg" alt="Chhakka Panja 3 poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.3 ⭐</span>
+                    <span class="overlay-year">2022</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">छक्का पन्जा ३ — Chhakka Panja 3</div>
+                <div class="movie-card__sub"><span>Comedy</span><span>·</span><span>2h 8m</span></div>
+              </div>
+            </div>
+
+            <!-- loot-2.jpg -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/loot-2.jpg" alt="Loot 2 poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.0 ⭐</span>
+                    <span class="overlay-year">2017</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">लुट २ — Loot 2</div>
+                <div class="movie-card__sub"><span>Action</span><span>·</span><span>2h 12m</span></div>
+              </div>
+            </div>
+
+            <!-- prem-geet-3.jpg -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/prem-geet-3.jpg" alt="Prem Geet 3 poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.2 ⭐</span>
+                    <span class="overlay-year">2022</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">प्रेम गीत ३ — Prem Geet 3</div>
+                <div class="movie-card__sub"><span>Romance</span><span>·</span><span>2h 20m</span></div>
+              </div>
+            </div>
+
+            <!-- ramprasad.jpg -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/ramprasad.jpg" alt="Ramprasad poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.5 ⭐</span>
+                    <span class="overlay-year">2023</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">रामप्रसाद — Ramprasad</div>
+                <div class="movie-card__sub"><span>Drama</span><span>·</span><span>2h 15m</span></div>
+              </div>
+            </div>
+
+            <!-- kabaddi-kabaddi.jpg -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/kabaddi-kabaddi.jpg" alt="Kabaddi Kabaddi poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.5 ⭐</span>
+                    <span class="overlay-year">2015</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">काबडी काबडी — Kabaddi Kabaddi</div>
+                <div class="movie-card__sub"><span>Sports</span><span>·</span><span>2h 22m</span></div>
+              </div>
+            </div>
+
+            <!-- kri.jpg -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/kri.jpg" alt="Kri poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.0 ⭐</span>
+                    <span class="overlay-year">2023</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">क्री — Kri</div>
+                <div class="movie-card__sub"><span>Action</span><span>·</span><span>2h 5m</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION 3: Classics
+      ========================= -->
+      <section class="movie-section" id="classics">
+        <div class="section-header">
+          <div class="section-header__left">
+            <span class="section-header__accent section-header__accent--gold"></span>
+            <h2 class="section-title">Classic Nepali Movies</h2>
+          </div>
+          <a href="#" class="section-more">View All <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
+        </div>
+        <div class="movie-row-wrapper">
+          <div class="movie-row">
+
+            <!-- loot.jpg -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/loot.jpg" alt="Loot poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.8 ⭐</span>
+                    <span class="overlay-year">2012</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">लुट — Loot</div>
+                <div class="movie-card__sub"><span>Action</span><span>·</span><span>2h 5m</span></div>
+              </div>
+            </div>
+
+            <!-- pasupati.jpg  ⚠️ your file is named "pasupati" (one 'h') -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/pasupati.jpg" alt="Pashupati Prasad poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">8.1 ⭐</span>
+                    <span class="overlay-year">2016</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">पशुपतिप्रसाद — Pashupati Prasad</div>
+                <div class="movie-card__sub"><span>Drama</span><span>·</span><span>2h 18m</span></div>
+              </div>
+            </div>
+
+            <!-- Kagbeni.jpg  ⚠️ your file has capital K -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/Kagbeni.jpg" alt="Kagbeni poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.9 ⭐</span>
+                    <span class="overlay-year">2008</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">काग्बेनी — Kagbeni</div>
+                <div class="movie-card__sub"><span>Thriller</span><span>·</span><span>2h 15m</span></div>
+              </div>
+            </div>
+
+            <!-- prem-geet.jpg -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/prem-geet.jpg" alt="Prem Geet poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.6 ⭐</span>
+                    <span class="overlay-year">2016</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">प्रेम गीत — Prem Geet</div>
+                <div class="movie-card__sub"><span>Romance</span><span>·</span><span>2h 28m</span></div>
+              </div>
+            </div>
+
+            <!-- kabaddi.jpg -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/kabaddi.jpg" alt="Kabaddi poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.4 ⭐</span>
+                    <span class="overlay-year">2014</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">काबडी — Kabaddi</div>
+                <div class="movie-card__sub"><span>Sports</span><span>·</span><span>2h 15m</span></div>
+              </div>
+            </div>
+
+            <!-- jatra.jpg -->
+            <div class="movie-card">
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/jatra.jpg" alt="Jatra poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.2 ⭐</span>
+                    <span class="overlay-year">2016</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">यात्रा — Jatra</div>
+                <div class="movie-card__sub"><span>Comedy</span><span>·</span><span>2h 10m</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================
+           SECTION 4: Top Rated
+      ========================= -->
+      <section class="movie-section" id="topRated">
+        <div class="section-header">
+          <div class="section-header__left">
+            <span class="section-header__accent section-header__accent--green"></span>
+            <h2 class="section-title">Top Rated Nepali Films</h2>
+          </div>
+          <a href="#" class="section-more">View All <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M8.59 16.58L13.17 12 8.59 7.41 10 6l6 6-6 6z"/></svg></a>
+        </div>
+        <div class="movie-row-wrapper">
+          <div class="movie-row">
+
+            <!-- #1 pasupati.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__rank">1</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/pasupati.jpg" alt="Pashupati Prasad poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">8.1 ⭐</span>
+                    <span class="overlay-year">2016</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">पशुपतिप्रसाद — Pashupati Prasad</div>
+                <div class="movie-card__sub"><span>Drama</span><span>·</span><span>2h 18m</span></div>
+              </div>
+            </div>
+
+            <!-- #2 Kagbeni.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__rank">2</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/Kagbeni.jpg" alt="Kagbeni poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.9 ⭐</span>
+                    <span class="overlay-year">2008</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">काग्बेनी — Kagbeni</div>
+                <div class="movie-card__sub"><span>Thriller</span><span>·</span><span>2h 15m</span></div>
+              </div>
+            </div>
+
+            <!-- #3 loot.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__rank">3</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/loot.jpg" alt="Loot poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.8 ⭐</span>
+                    <span class="overlay-year">2012</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">लुट — Loot</div>
+                <div class="movie-card__sub"><span>Action</span><span>·</span><span>2h 5m</span></div>
+              </div>
+            </div>
+
+            <!-- #4 seto-surya.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__rank">4</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/seto-surya.jpg" alt="Seto Surya poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.8 ⭐</span>
+                    <span class="overlay-year">2023</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">सेतो सूर्य — Seto Surya</div>
+                <div class="movie-card__sub"><span>War</span><span>·</span><span>2h 30m</span></div>
+              </div>
+            </div>
+
+            <!-- #5 bulbul.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__rank">5</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/bulbul.jpg" alt="Bulbul poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.6 ⭐</span>
+                    <span class="overlay-year">2023</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">बुलबुल — Bulbul</div>
+                <div class="movie-card__sub"><span>Romance</span><span>·</span><span>2h 5m</span></div>
+              </div>
+            </div>
+
+            <!-- #6 prem-geet.jpg -->
+            <div class="movie-card">
+              <span class="movie-card__rank">6</span>
+              <div class="movie-card__poster">
+                <img class="movie-card__img" src="./assets/posters/prem-geet.jpg" alt="Prem Geet poster" loading="lazy"/>
+                <div class="movie-card__overlay">
+                  <button class="movie-card__quick-play">▶</button>
+                  <div class="movie-card__overlay-meta">
+                    <span class="overlay-rating">7.6 ⭐</span>
+                    <span class="overlay-year">2016</span>
+                  </div>
+                </div>
+              </div>
+              <div class="movie-card__info">
+                <div class="movie-card__title">प्रेम गीत — Prem Geet</div>
+                <div class="movie-card__sub"><span>Romance</span><span>·</span><span>2h 28m</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </div><!-- /content-area -->
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__brand">
+        <img src="./assets/img/nepFL.png"
+             alt="Nepflix Logo"
+             class="footer__brand-logo">
+      </div>
+      <p class="footer__tagline">नेपाली सिनेमा — Celebrating Nepali Cinema</p>
+      <p class="footer__copy">© 2025 Nepflix. All rights reserved. Made in Nepal.</p>
+    </footer>
+  </main>
+</body>
+</html>

@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Nepflix – Stream Nepali Cinema</title>
+  <link rel="stylesheet" href="open_style.css" />
+  <link rel="icon" type="image/x-icon" href="./assets/img/N bar.png" />
+</head>
+
+<body>
+
+  <!-- ══════════════════════════════
+       HEADER
+  ═══════════════════════════════ -->
+  <header>
+    <div class="bg_shadow">
+
+      <nav>
+        <ul>
+          <li>
+            <a href="home.html">
+              <img src="./assets/img/nepFL.png" class="logo" alt="Nepflix Logo" />
+            </a>
+          </li>
+          <li class="nav-right">
+            <!-- Desktop Sign In — hidden on mobile -->
+            <a href="signup.html" class="login_btn desktop-only">Sign In</a>
+
+            <!--
+              Hamburger label — targets #menu-toggle checkbox.
+              Clicking this label checks/unchecks the hidden input,
+              which opens/closes the mobile drawer via CSS.
+            -->
+            <label for="menu-toggle" class="hamburger" aria-label="Toggle menu">
+              <span></span>
+              <span></span>
+              <span></span>
+            </label>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="header_content">
+        <h1>Unlimited movies, TV shows, and more</h1>
+        <h3>Watch anywhere. Cancel anytime.</h3>
+        <h4>Ready to watch? Enter your email to create or restart your membership.</h4>
+        <div class="email_sec">
+          <input type="email" placeholder="Email Address" />
+          <a href="signup_html.html" class="get_started_btn">
+            Get Started <span class="arrow">›</span>
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ════════════════════════════
+         WATCH TV
+    ═════════════════════════════ -->
+    <section id="watchTv">
+      <div class="content_area">
+        <h1>Enjoy on your TV</h1>
+        <h3>Watch on Smart TVs, Playstation, Xbox, Chromecast, Apple TV, Blu-ray players, and more.</h3>
+      </div>
+      <div class="screen_area">
+        <img src="./assets/img/tv.png" alt="TV" />
+        <div class="video_area">
+          <!--
+            Video: ./assets/videos/NEPFLIX OFFICIAL VIDEO.mp4
+            autoplay + muted + loop works without JS natively in browsers
+          -->
+          <video
+            src="./assets/videos/NEPFLIX OFFICIAL VIDEO.mp4"
+            autoplay
+            muted
+            loop
+            playsinline
+          ></video>
+        </div>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+         DOWNLOAD SHOWS
+    ═════════════════════════════ -->
+    <section id="downloadShows">
+      <div class="screen_area">
+        <img src="./assets/img/mobile.png" alt="Mobile" />
+        <div class="box_area">
+          <img src="./assets/img/boxshot nep.png" alt="Show Thumbnail" />
+          <div class="text_area">
+            <h5>Unko Sweater</h5>
+            <h6>Downloading...</h6>
+            <!-- CSS animated progress bar — replaces JS animation -->
+            <div class="download-bar">
+              <div class="download-bar-fill"></div>
+            </div>
+          </div>
+          <!-- CSS animated arrow — replaces Font Awesome fa-arrow-down -->
+          <span class="download-arrow">⬇</span>
+        </div>
+      </div>
+      <div class="content_area">
+        <h1>Download your shows to watch offline</h1>
+        <h3>Save your favorites easily and always have something to watch.</h3>
+      </div>
+    </section>
+
+    <!-- ════════════════════════════
+         WATCH EVERYWHERE
+    ═════════════════════════════ -->
+    <section id="watchEverywhere">
+      <div class="content_area">
+        <h1>Watch everywhere</h1>
+        <h3>Stream unlimited movies and TV shows on your phone, tablet, laptop, and TV.</h3>
+
+        <!-- Floating device cards — all CSS animation, no JS -->
+        <div class="devices-grid">
+          <div class="device-card">
+            <span class="device-icon">📱</span>
+            <span class="device-label">Phone</span>
+          </div>
+          <div class="device-card">
+            <span class="device-icon">💻</span>
+            <span class="device-label">Laptop</span>
+          </div>
+          <div class="device-card">
+            <span class="device-icon">📺</span>
+            <span class="device-label">Smart TV</span>
+          </div>
+          <div class="device-card">
+            <span class="device-icon">📱</span>
+            <span class="device-label">Tablet</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="faq">
+      <h1>Frequently Asked Questions</h1>
+
+      <div class="faq_area">
+
+        <!-- ── FAQ 1 ── -->
+        <!--
+          Step 1: hidden checkbox — placed BEFORE .faq
+          Step 2: label inside .faq_question targets this checkbox
+          Step 3: CSS sibling selector expands .faq_answer on :checked
+        -->
+        <input type="checkbox" class="faq-toggle" id="faq1" />
+        <div class="faq">
+          <label class="faq_question" for="faq1">
+            <h4>What is Nepflix?</h4>
+            <span class="faq-icon">＋</span>
+          </label>
+          <div class="faq_answer">
+            <p>Nepflix is a Nepali streaming platform dedicated to Nepali cinema and original content. Created to celebrate and promote Nepali film culture, it offers a curated library of the best movies from Nepal — including top hits like Pashupati Prasad, Loot, Bulbul, and Kagbeni.</p>
+          </div>
+        </div>
+
+        <!-- ── FAQ 2 ── -->
+        <input type="checkbox" class="faq-toggle" id="faq2" />
+        <div class="faq">
+          <label class="faq_question" for="faq2">
+            <h4>How much does Nepflix cost?</h4>
+            <span class="faq-icon">＋</span>
+          </label>
+          <div class="faq_answer">
+            <p>Nepflix is free for demonstration and learning projects. In a full release, flexible subscription plans would be available starting from affordable monthly rates to suit every budget.</p>
+          </div>
+        </div>
+
+        <!-- ── FAQ 3 ── -->
+        <input type="checkbox" class="faq-toggle" id="faq3" />
+        <div class="faq">
+          <label class="faq_question" for="faq3">
+            <h4>Where can I watch?</h4>
+            <span class="faq-icon">＋</span>
+          </label>
+          <div class="faq_answer">
+            <p>You can watch Nepflix on Smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players, laptops, tablets, and mobile devices — anywhere with an internet connection.</p>
+          </div>
+        </div>
+
+        <!-- ── FAQ 4 ── -->
+        <input type="checkbox" class="faq-toggle" id="faq4" />
+        <div class="faq">
+          <label class="faq_question" for="faq4">
+            <h4>How do I cancel?</h4>
+            <span class="faq-icon">＋</span>
+          </label>
+          <div class="faq_answer">
+            <p>You can cancel anytime from your account settings — no fees, no hassle. Your membership continues until the end of the current billing period with no extra charges.</p>
+          </div>
+        </div>
+
+        <!-- ── FAQ 5 ── -->
+        <input type="checkbox" class="faq-toggle" id="faq5" />
+        <div class="faq">
+          <label class="faq_question" for="faq5">
+            <h4>What can I watch on Nepflix?</h4>
+            <span class="faq-icon">＋</span>
+          </label>
+          <div class="faq_answer">
+            <p>Nepflix offers an extensive library including feature films, comedies, dramas, action movies, romantic films, and classic Nepali cinema — with top-rated titles such as Pashupati Prasad, Loot, Kagbeni, Bulbul, Seto Surya, Chhakka Panja, and many more.</p>
+          </div>
+        </div>
+
+      </div><!-- /faq_area -->
+
+      <h4 class="faq_bottom_text">Ready to watch? Enter your email to create or restart your membership.</h4>
+      <div class="email_sec">
+        <input type="email" placeholder="Email Address" />
+        <a href="signup_html.html" class="get_started_btn">
+          Get Started <span class="arrow">›</span>
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ════════════════════════════
+       FOOTER
+  ═════════════════════════════ -->
+  <footer>
+    <h4>Questions? Contact us.</h4>
+    <div class="footer_area">
+      <div class="col">
+        <ul>
+          <li>FAQ</li>
+          <li>Investor Relations</li>
+          <li>Privacy</li>
+          <li>Speed Test</li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul>
+          <li>Help Center</li>
+          <li>Jobs</li>
+          <li>Cookie Preferences</li>
+          <li>Legal Notices</li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul>
+          <li>Account</li>
+          <li>Ways to Watch</li>
+          <li>Corporate Information</li>
+          <li>Only on Nepflix</li>
+        </ul>
+      </div>
+      <div class="col">
+        <ul>
+          <li>Media Center</li>
+          <li>Terms of Use</li>
+          <li>Contact Us</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="translation_area">
+      <img src="./assets/img/translate.png" alt="Language" />
+      <select>
+        <option value="ne" selected>Nepali</option>
+        <option value="hi">Hindi</option>
+        <option value="en">English</option>
+      </select>
+    </div>
+
+    <p>Nepflix</p>
+  </footer>
+
+</body>
+</html>

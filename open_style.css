@@ -1,0 +1,855 @@
+/* =============================================
+   NEPFLIX — open_style.css
+   Pure CSS — No JavaScript
+   Checkbox hack: FAQ accordion + Hamburger menu
+============================================= */
+
+/* =============================================
+   RESET & BASE
+============================================= */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --red:        #e50913;
+  --red-dark:   #c50b14;
+  --black:      #000000;
+  --dark2:      #2d2d2d;
+  --dark3:      #454545;
+  --border:     #222222;
+  --blue:       #0071eb;
+  --text-muted: rgba(255, 255, 255, 0.7);
+  --font-body:  'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+html {
+  font-size: 10px;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--black);
+  font-family: var(--font-body);
+  color: white;
+}
+
+/* =============================================
+   CHECKBOX HACK — hidden inputs that power
+   FAQ accordion and hamburger menu
+   MUST be placed early in the <body>
+============================================= */
+
+/* Hide all checkboxes */
+#menu-toggle,
+.faq-toggle {
+  display: none;
+}
+
+/* =============================================
+   HEADER
+============================================= */
+header {
+  background-image: url(./assets/img/Nepflix\ banner.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  min-height: 68.5rem;
+  border-bottom: 0.8rem solid var(--red);
+  animation: headerReveal 1.2s ease both;
+}
+
+@keyframes headerReveal {
+  from { opacity: 0; transform: scale(1.03); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+header .bg_shadow {
+  width: 100%;
+  min-height: 68.5rem;
+  background: linear-gradient(
+    to bottom,
+    rgba(0,0,0,0.85),
+    rgba(0,0,0,0.40),
+    rgba(0,0,0,0.85)
+  );
+  display: flex;
+  flex-direction: column;
+}
+
+/* =============================================
+   NAV
+============================================= */
+nav {
+  padding: 1.75rem 6%;
+  animation: slideDown 0.8s ease 0.2s both;
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+nav ul {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+}
+
+nav ul li .logo {
+  width: 15rem;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+nav ul li .logo:hover {
+  transform: scale(1.04);
+  opacity: 0.9;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.login_btn {
+  background-color: var(--red);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.6rem;
+  border: none;
+  font-weight: 600;
+  font-size: 1.45rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  white-space: nowrap;
+  display: inline-block;
+  font-family: var(--font-body);
+}
+
+.login_btn:hover {
+  background-color: var(--red-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(229,9,20,0.4);
+}
+
+/* =============================================
+   HAMBURGER — label triggers #menu-toggle
+============================================= */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 2.8rem;
+  height: 2.2rem;
+  cursor: pointer;
+  z-index: 200;
+  position: relative;
+}
+
+.hamburger span {
+  display: block;
+  height: 0.3rem;
+  background: white;
+  border-radius: 0.2rem;
+  transition: all 0.35s ease;
+  transform-origin: center;
+}
+
+/* Animate hamburger → X when menu is open */
+#menu-toggle:checked ~ .bg_shadow .hamburger span:nth-child(1),
+#menu-toggle:checked + nav .hamburger span:nth-child(1) {
+  transform: translateY(0.95rem) rotate(45deg);
+}
+#menu-toggle:checked ~ .bg_shadow .hamburger span:nth-child(2),
+#menu-toggle:checked + nav .hamburger span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+#menu-toggle:checked ~ .bg_shadow .hamburger span:nth-child(3),
+#menu-toggle:checked + nav .hamburger span:nth-child(3) {
+  transform: translateY(-0.95rem) rotate(-45deg);
+}
+
+/* =============================================
+   MOBILE MENU DRAWER
+   Controlled by #menu-toggle checkbox
+============================================= */
+.mobile-menu {
+  display: flex;
+  position: fixed;
+  top: 0;
+  right: -100%;           /* hidden off-screen */
+  width: min(28rem, 85vw);
+  height: 100vh;
+  background: rgba(0,0,0,0.97);
+  border-left: 2px solid var(--red);
+  z-index: 150;
+  padding: 7rem 2.5rem 3rem;
+  flex-direction: column;
+  gap: 2rem;
+  transition: right 0.35s ease;
+  overflow-y: auto;
+}
+
+/* Slide in when checkbox is checked */
+#menu-toggle:checked ~ .mobile-menu {
+  right: 0;
+}
+
+.mobile-menu a {
+  color: white;
+  text-decoration: none;
+  font-size: 2rem;
+  font-weight: 500;
+  padding: 1.2rem 0;
+  border-bottom: 1px solid #333;
+  transition: color 0.2s, padding-left 0.2s;
+  display: block;
+}
+
+.mobile-menu a:hover {
+  color: var(--red);
+  padding-left: 0.8rem;
+}
+
+.mobile-menu a:last-child { border-bottom: none; }
+
+.mobile-menu .login_btn {
+  text-align: center;
+  margin-top: 1rem;
+  font-size: 1.8rem;
+  padding: 1.2rem 2rem;
+}
+
+/* Dark overlay behind open menu */
+.menu-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  z-index: 140;
+  cursor: pointer;
+}
+
+#menu-toggle:checked ~ .menu-overlay {
+  display: block;
+}
+
+/* Clicking overlay closes menu (label targets checkbox) */
+.menu-overlay-close {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 141;
+  cursor: pointer;
+}
+
+#menu-toggle:checked ~ .menu-overlay-close {
+  display: block;
+}
+
+/* =============================================
+   HEADER CONTENT
+============================================= */
+.header_content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 5%;
+  animation: contentReveal 1s ease 0.4s both;
+}
+
+@keyframes contentReveal {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.header_content h1 {
+  color: white;
+  font-size: clamp(2.8rem, 5vw, 5.5rem);
+  font-weight: bold;
+  line-height: 1.2;
+  max-width: 80rem;
+}
+
+.header_content h3 {
+  color: white;
+  font-size: clamp(1.6rem, 2.5vw, 2.5rem);
+  font-weight: normal;
+  margin: 2rem 0;
+}
+
+.header_content h4 {
+  color: white;
+  font-size: clamp(1.4rem, 1.8vw, 2rem);
+  font-weight: normal;
+}
+
+/* =============================================
+   EMAIL SECTION
+============================================= */
+.email_sec {
+  margin: 2rem 0;
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.email_sec input {
+  background-color: #1f1919;
+  border: 1px solid grey;
+  color: lightgrey;
+  padding: 1.6rem;
+  outline: none;
+  border-radius: 0.45rem;
+  width: clamp(22rem, 34vw, 34rem);
+  font-size: 1.6rem;
+  font-family: var(--font-body);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.email_sec input:focus {
+  border-color: var(--red);
+  box-shadow: 0 0 0 2px rgba(229,9,20,0.2);
+}
+
+.email_sec input::placeholder { color: lightgrey; }
+
+.get_started_btn {
+  background-color: var(--red);
+  border: none;
+  color: white;
+  padding: 1.2rem 2.4rem;
+  font-size: clamp(1.6rem, 2vw, 2.3rem);
+  font-weight: 600;
+  border-radius: 0.45rem;
+  transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+.get_started_btn:hover {
+  background-color: var(--red-dark);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(229,9,20,0.4);
+}
+
+/* Arrow icon inside button */
+.get_started_btn .arrow {
+  margin-left: 1.2rem;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.get_started_btn:hover .arrow { transform: translateX(3px); }
+
+/* =============================================
+   SECTIONS — GENERAL
+============================================= */
+section {
+  padding: clamp(5rem, 8vw, 10rem) clamp(2rem, 6%, 15rem);
+  border-bottom: 0.8rem solid var(--border);
+}
+
+/* Scroll-triggered fade-in via animation */
+section {
+  animation: sectionFadeUp 0.9s ease both;
+}
+
+#watchTv       { animation-delay: 0.05s; }
+#downloadShows { animation-delay: 0.1s; }
+#watchEverywhere { animation-delay: 0.15s; }
+#faq           { animation-delay: 0.2s; }
+
+@keyframes sectionFadeUp {
+  from { opacity: 0; transform: translateY(40px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* =============================================
+   WATCH TV SECTION
+============================================= */
+#watchTv {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+#watchTv .content_area { flex: 1; min-width: 0; }
+
+#watchTv .content_area h1 {
+  color: white;
+  font-size: clamp(2.8rem, 4vw, 5rem);
+  line-height: 1.2;
+}
+
+#watchTv .content_area h3 {
+  color: white;
+  font-size: clamp(1.6rem, 2vw, 2.4rem);
+  font-weight: normal;
+  margin-top: 1.5rem;
+}
+
+/* TV / Screen container */
+.screen_area {
+  position: relative;
+  width: clamp(28rem, 40vw, 50rem);
+  flex-shrink: 0;
+}
+
+.screen_area > img {
+  width: 100%;
+  display: block;
+  position: relative;
+  z-index: 2;
+}
+
+/* Video inside TV frame */
+.video_area {
+  position: absolute;
+  top: 21%;
+  left: 12.5%;
+  width: 74%;
+  height: 58%;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.video_area video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =============================================
+   DOWNLOAD SHOWS SECTION
+============================================= */
+#downloadShows {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+#downloadShows .content_area { flex: 1; min-width: 0; }
+
+#downloadShows .content_area h1 {
+  color: white;
+  font-size: clamp(2.8rem, 4vw, 5rem);
+  line-height: 1.2;
+}
+
+#downloadShows .content_area h3 {
+  color: white;
+  font-size: clamp(1.6rem, 2vw, 2.4rem);
+  font-weight: normal;
+  margin-top: 1.5rem;
+}
+
+#downloadShows .screen_area > img {
+  width: 90%;
+  z-index: 1;
+}
+
+.box_area {
+  position: absolute;
+  bottom: 3rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: black;
+  border: 2px solid grey;
+  border-radius: 0.7rem;
+  padding: 0.75rem;
+  width: clamp(22rem, 75%, 30rem);
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  /* Pulsing border glow — replaces JS animation */
+  animation: boxPulse 2.5s ease-in-out infinite;
+}
+
+@keyframes boxPulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(229,9,20,0); border-color: grey; }
+  50%       { box-shadow: 0 0 0 6px rgba(229,9,20,0.15); border-color: rgba(229,9,20,0.6); }
+}
+
+.box_area img {
+  width: 5rem;
+  flex-shrink: 0;
+}
+
+.box_area .text_area {
+  padding-left: 1.5rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.box_area .text_area h5 { color: white; font-size: 1.5rem; }
+
+.box_area .text_area h6 { color: var(--blue); font-size: 1.3rem; }
+
+/* Download progress bar — pure CSS animation */
+.download-bar {
+  height: 3px;
+  background: rgba(255,255,255,0.1);
+  border-radius: 2px;
+  margin-top: 5px;
+  overflow: hidden;
+}
+
+.download-bar-fill {
+  height: 100%;
+  background: var(--blue);
+  border-radius: 2px;
+  animation: downloadFill 2.8s ease-in-out infinite;
+}
+
+@keyframes downloadFill {
+  0%        { width: 0%;   opacity: 1; }
+  75%       { width: 100%; opacity: 1; }
+  90%, 100% { width: 100%; opacity: 0; }
+}
+
+/* Download arrow — replaces Font Awesome icon, CSS animated */
+.download-arrow {
+  color: var(--blue);
+  padding-right: 1rem;
+  font-size: 1.75rem;
+  flex-shrink: 0;
+  display: inline-block;
+  animation: arrowBounce 1.4s ease-in-out infinite;
+  line-height: 1;
+}
+
+@keyframes arrowBounce {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(5px); }
+}
+
+/* =============================================
+   WATCH EVERYWHERE SECTION
+============================================= */
+#watchEverywhere .content_area h1 {
+  color: white;
+  font-size: clamp(2.8rem, 4vw, 5rem);
+  line-height: 1.2;
+}
+
+#watchEverywhere .content_area h3 {
+  color: white;
+  font-size: clamp(1.6rem, 2vw, 2.4rem);
+  font-weight: normal;
+  margin-top: 1.5rem;
+  max-width: 60rem;
+}
+
+/* Floating device cards */
+.devices-grid {
+  display: flex;
+  gap: 2rem;
+  margin-top: 3rem;
+  flex-wrap: wrap;
+}
+
+.device-card {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 1rem;
+  padding: 2.2rem 2.5rem;
+  text-align: center;
+  flex: 1;
+  min-width: 13rem;
+  transition: border-color 0.3s, background 0.3s, box-shadow 0.3s;
+  animation: deviceFloat 3s ease-in-out infinite;
+}
+
+.device-card:nth-child(2) { animation-delay: 0.5s; }
+.device-card:nth-child(3) { animation-delay: 1s; }
+.device-card:nth-child(4) { animation-delay: 1.5s; }
+
+@keyframes deviceFloat {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(-7px); }
+}
+
+.device-card:hover {
+  border-color: var(--red);
+  background: rgba(229,9,20,0.07);
+  box-shadow: 0 0 20px rgba(229,9,20,0.15);
+}
+
+.device-icon { font-size: 3.5rem; display: block; margin-bottom: 1rem; }
+.device-label { color: var(--text-muted); font-size: 1.4rem; font-weight: 500; }
+
+/* =============================================
+   FAQ SECTION
+   Pure CSS accordion using hidden checkboxes +
+   sibling selectors. No JavaScript at all.
+
+   Structure per item:
+     <input type="checkbox" class="faq-toggle" id="faqN">
+     <div class="faq">
+       <label class="faq_question" for="faqN">…</label>
+       <div class="faq_answer">…</div>
+     </div>
+
+   :checked on input → sibling .faq gets styles
+============================================= */
+#faq {
+  padding: clamp(5rem, 8vw, 10rem) clamp(2rem, 6%, 15rem);
+  border-bottom: 0.8rem solid var(--border);
+}
+
+#faq > h1 {
+  font-size: clamp(2.8rem, 4vw, 4.8rem);
+  text-align: center;
+  font-weight: bold;
+  color: white;
+}
+
+.faq_area { margin-top: 3rem; }
+
+/* The wrapper div for each FAQ item */
+.faq {
+  background-color: var(--dark2);
+  color: white;
+  margin: 1rem 0;
+  overflow: hidden;
+  transition: background 0.3s;
+  border-radius: 0.2rem;
+}
+
+.faq:hover { background-color: var(--dark3); }
+
+/* Label = clickable question bar */
+.faq_question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2.5rem 2rem;
+  gap: 1rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.faq_question h4 {
+  font-size: clamp(1.6rem, 2vw, 2.2rem);
+  font-weight: normal;
+  pointer-events: none;
+}
+
+/* Plus icon — rotates to × via CSS when open */
+.faq-icon {
+  font-size: clamp(2rem, 2.2vw, 2.5rem);
+  transition: transform 0.35s ease;
+  flex-shrink: 0;
+  display: inline-block;
+  line-height: 1;
+  pointer-events: none;
+}
+
+/* Collapsed by default */
+.faq_answer {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.45s ease;
+}
+
+.faq_answer p {
+  padding: 0 2rem 2rem;
+  font-size: clamp(1.4rem, 1.8vw, 1.8rem);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+/*
+  When .faq-toggle checkbox is checked:
+  - Expand the NEXT sibling .faq > .faq_answer
+  - Rotate the icon inside label
+  The checkbox sits immediately before its .faq div.
+*/
+.faq-toggle:checked + .faq .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-toggle:checked + .faq .faq_answer {
+  max-height: 500px;
+}
+
+.faq-toggle:checked + .faq {
+  background-color: var(--dark3);
+}
+
+.faq_bottom_text {
+  font-size: clamp(1.6rem, 2vw, 2rem);
+  color: white;
+  font-weight: normal;
+  text-align: center;
+  margin-top: 3rem;
+}
+
+/* =============================================
+   FOOTER
+============================================= */
+footer {
+  padding: 5rem 0;
+  width: min(90%, 120rem);
+  margin: 0 auto;
+}
+
+footer > h4 {
+  color: var(--text-muted);
+  font-size: 1.7rem;
+  font-weight: normal;
+  text-decoration: underline;
+  margin-bottom: 1.5rem;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+footer > h4:hover { color: white; }
+
+.footer_area {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.footer_area .col ul { list-style: none; margin-top: 1rem; }
+
+.footer_area .col ul li {
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  margin: 1.3rem 0;
+  text-decoration: underline;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.footer_area .col ul li:hover { color: white; }
+
+.translation_area {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.translation_area img {
+  position: absolute;
+  left: 0.5rem;
+  width: 1.8rem;
+  pointer-events: none;
+}
+
+footer select {
+  color: white;
+  font-size: 1.4rem;
+  background-color: #1f1919;
+  padding: 0.6rem 1rem 0.6rem 3rem;
+  border-radius: 0.5rem;
+  border: 1px solid #555;
+  cursor: pointer;
+  appearance: none;
+  font-family: var(--font-body);
+  transition: border-color 0.2s;
+}
+
+footer select:focus { border-color: var(--red); outline: none; }
+
+footer > p {
+  color: var(--text-muted);
+  font-size: 1.4rem;
+  padding-top: 2rem;
+}
+
+/* =============================================
+   RESPONSIVE — Tablet landscape (769–1024px)
+============================================= */
+@media (max-width: 1024px) {
+  nav { padding: 2rem 3rem; }
+  .screen_area { width: clamp(24rem, 45vw, 40rem); }
+  footer { width: 95%; }
+}
+
+/* =============================================
+   RESPONSIVE — Tablet portrait (540–768px)
+============================================= */
+@media (max-width: 768px) {
+  html { font-size: 9px; }
+
+  .hamburger       { display: flex; }
+  .desktop-only    { display: none !important; }
+
+  header,
+  header .bg_shadow { min-height: 52rem; }
+
+  .email_sec           { flex-direction: column; align-items: center; }
+  .email_sec input     { width: 100%; max-width: 38rem; }
+
+  #watchTv             { flex-direction: column; text-align: center; }
+  #watchTv .screen_area { width: min(40rem, 90vw); }
+
+  #downloadShows       { flex-direction: column-reverse; text-align: center; }
+  #downloadShows .screen_area { width: min(40rem, 90vw); }
+
+  #watchEverywhere .content_area { text-align: center; }
+  .devices-grid        { justify-content: center; }
+
+  .footer_area         { grid-template-columns: repeat(2, 1fr); }
+}
+
+/* =============================================
+   RESPONSIVE — Mobile (max 539px)
+============================================= */
+@media (max-width: 539px) {
+  html { font-size: 8.5px; }
+
+  header,
+  header .bg_shadow { min-height: 48rem; }
+
+  .header_content { padding: 2rem 4%; }
+
+  nav { padding: 1.5rem 2rem; }
+  nav ul li .logo { width: 9.5rem; }
+
+  .screen_area { width: 90vw; }
+
+  .box_area {
+    width: clamp(18rem, 80vw, 27rem);
+    bottom: 0.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  #faq > h1 { font-size: 2.8rem; }
+
+  .footer_area { grid-template-columns: repeat(2, 1fr); }
+
+  .device-card { min-width: 10rem; padding: 1.5rem; }
+}
+
+/* =============================================
+   RESPONSIVE — Very small (max 375px)
+============================================= */
+@media (max-width: 375px) {
+  nav ul li .logo    { width: 8rem; }
+  .header_content h1 { font-size: 2.4rem; }
+  .get_started_btn   { font-size: 1.6rem; padding: 1rem 1.6rem; }
+}

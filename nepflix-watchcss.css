@@ -1,0 +1,387 @@
+/* ============================================================
+   NEPFLIX — nepflix-watchcss.css
+   Watch Page — Pure CSS, No JavaScript
+   ============================================================ */
+
+/* ── Design Tokens ── */
+:root {
+  --bg-black:       #000000;
+  --bg-dark:        #0b0b0b;
+  --bg-card:        #141414;
+  --accent-red:     #e50914;
+  --accent-glow:    rgba(229, 9, 20, 0.35);
+  --text-primary:   #ffffff;
+  --text-secondary: #b3b3b3;
+  --text-muted:     #666666;
+  --radius:         10px;
+  --ease:           cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --font-display:   'Bebas Neue', sans-serif;
+  --font-body:      'DM Sans', sans-serif;
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg-black);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: var(--accent-red); border-radius: 2px; }
+
+/* ============================================================
+   PLAYER WRAPPER
+   ============================================================ */
+.player-wrapper {
+  position: relative;
+  width: 100%;
+  background: #000;
+  overflow: hidden;
+  /* CSS-only fullscreen trick using :focus-within */
+}
+
+/* ── Navigation Overlay ── */
+.nav {
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 32px;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.85) 0%, transparent 100%);
+  /* Fade in on hover over player */
+  opacity: 0;
+  transition: opacity 0.4s var(--ease);
+  pointer-events: none;
+}
+
+.player-wrapper:hover .nav {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.nav__logo { display: flex; align-items: center; text-decoration: none; }
+
+.nav__logo-img {
+  height: 32px; width: auto;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+.nav__logo:hover .nav__logo-img { transform: scale(1.05); }
+
+.nav__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+  letter-spacing: 2px;
+  text-align: center;
+}
+
+.nav__actions { display: flex; align-items: center; gap: 12px; }
+
+.nav__btn {
+  background: rgba(0,0,0,0.5);
+  border: 1.5px solid rgba(255,255,255,0.25);
+  color: var(--text-primary);
+  width: 40px; height: 40px;
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.1rem;
+  backdrop-filter: blur(8px);
+  text-decoration: none;
+}
+
+.nav__btn:hover {
+  border-color: var(--accent-red);
+  box-shadow: 0 0 16px var(--accent-glow);
+  background: rgba(229,9,20,0.15);
+}
+
+/* ── Video Element ── */
+.player__video {
+  width: 100%;
+  height: 80vh;
+  min-height: 480px;
+  object-fit: contain;
+  display: block;
+  background: #000;
+}
+
+/* ── Pause / Watermark Overlay (shown via CSS :not(:playing) trick) ── */
+/* We use the <video> poster attribute for the paused state visual */
+
+/* ============================================================
+   GLOW DIVIDER
+   ============================================================ */
+.glow-divider {
+  width: 100%;
+  height: 1px;
+  background: linear-gradient(to right, transparent, var(--accent-red), transparent);
+  opacity: 0.4;
+  margin: 0;
+}
+
+/* ============================================================
+   MOVIE INFO SECTION
+   ============================================================ */
+.movie-info {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 48px 32px;
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 48px;
+  align-items: start;
+  animation: fadeUp 0.8s var(--ease) both;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Left Column ── */
+.movie-info__left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.movie-poster {
+  position: relative;
+  border-radius: var(--radius);
+  overflow: hidden;
+  box-shadow: 0 8px 40px rgba(0,0,0,0.8), 0 0 0 1px rgba(255,255,255,0.05);
+  transition: transform 0.4s var(--ease), box-shadow 0.4s var(--ease);
+}
+
+.movie-poster:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 60px rgba(0,0,0,0.9), 0 0 0 1px rgba(229,9,20,0.2), 0 0 40px var(--accent-glow);
+}
+
+.movie-poster img {
+  width: 100%;
+  aspect-ratio: 2/3;
+  object-fit: cover;
+  display: block;
+}
+
+.movie-poster__rating {
+  position: absolute;
+  top: 12px; left: 12px;
+  background: var(--accent-red);
+  color: #fff;
+  font-size: 0.7rem;
+  font-weight: 700;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.movie-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  flex-wrap: wrap;
+}
+
+.movie-meta__sep { color: var(--text-muted); }
+
+/* ── Action Buttons ── */
+.btn-play-large {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: var(--accent-red);
+  color: #fff;
+  border: none;
+  padding: 14px 28px;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 20px var(--accent-glow);
+  text-decoration: none;
+}
+
+.btn-play-large:hover {
+  background: #ff1a24;
+  box-shadow: 0 6px 30px rgba(229,9,20,0.5);
+  transform: translateY(-2px);
+}
+
+.btn-download {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: transparent;
+  color: var(--text-primary);
+  border: 1.5px solid rgba(255,255,255,0.3);
+  padding: 13px 28px;
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn-download:hover {
+  border-color: var(--accent-red);
+  color: var(--accent-red);
+  box-shadow: 0 0 16px var(--accent-glow);
+}
+
+/* ── Right Column ── */
+.movie-info__right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.movie-info__title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  letter-spacing: 3px;
+  line-height: 1;
+  color: var(--text-primary);
+}
+
+.movie-info__description {
+  font-size: 1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  max-width: 640px;
+}
+
+.movie-details {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.movie-detail {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  gap: 8px;
+  font-size: 0.9rem;
+}
+
+.movie-detail__label { color: var(--text-muted); font-weight: 500; }
+.movie-detail__value { color: var(--text-secondary); }
+
+/* ── Cast Chips ── */
+.cast-list { display: flex; flex-wrap: wrap; gap: 8px; }
+
+.cast-chip {
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-secondary);
+  padding: 5px 14px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  cursor: default;
+}
+
+.cast-chip:hover {
+  border-color: var(--accent-red);
+  color: var(--text-primary);
+  box-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* ── IMDb Rating block ── */
+.imdb-block {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.imdb-badge {
+  background: #f5c518;
+  color: #000;
+  font-weight: 800;
+  font-size: 0.75rem;
+  padding: 3px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+}
+
+.imdb-score {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #f5c518;
+}
+
+.imdb-label {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ── Notice banner (no JS note) ── */
+.notice-banner {
+  background: rgba(229,9,20,0.08);
+  border: 1px solid rgba(229,9,20,0.25);
+  border-radius: var(--radius);
+  padding: 12px 18px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.notice-banner strong { color: var(--text-primary); }
+
+/* ============================================================
+   RESPONSIVE
+   ============================================================ */
+@media (max-width: 900px) {
+  .movie-info {
+    grid-template-columns: 1fr;
+    padding: 32px 20px;
+    gap: 32px;
+  }
+
+  .movie-info__left {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 20px;
+    align-items: start;
+  }
+
+  .movie-poster { grid-row: span 3; }
+
+  .player__video { height: 56vw; min-height: 260px; }
+
+  .nav { padding: 12px 16px; }
+}
+
+@media (max-width: 600px) {
+  .movie-info__left {
+    grid-template-columns: 1fr;
+  }
+
+  .nav__title { display: none; }
+
+  .player__controls { padding: 0 12px 14px; }
+
+  .movie-detail {
+    grid-template-columns: 90px 1fr;
+  }
+}
