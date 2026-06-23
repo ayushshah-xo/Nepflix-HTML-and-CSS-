@@ -281,9 +281,3 @@ This project is licensed under the **MIT License** — see the [LICENSE](LICENSE
 > **Disclaimer:** This is a fan-made, educational, non-commercial project. All Nepali movie posters remain the property of their respective owners. The Nepflix name and branding are original creations for this project and are not affiliated with Netflix, Inc.
 
 ---
-
-<div align="center">
-
-Made with ❤️ to celebrate Nepali Cinema — नेपाली सिनेमा 🇳🇵
-
-</div>
