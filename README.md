@@ -2,7 +2,6 @@
 
 <img src="https://raw.githubusercontent.com/ayushshah-xo/Nepflix-HTML-and-CSS-/main/assets/img/nepFL.png" alt="Nepflix Logo" width="220"/>
 
-# Nepflix 🎬
 
 **The Nepali streaming experience — built with pure HTML & CSS**
 
